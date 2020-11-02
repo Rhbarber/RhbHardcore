@@ -1,4 +1,4 @@
-name: Hardcore
+name: RhbHardcore
 version: ${project.version}
 main: com.rhbarber.hardcore.Hardcore
 api-version: 1.16

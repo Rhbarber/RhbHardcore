@@ -25,7 +25,7 @@ public class Hardcore extends JavaPlugin
         instance = this;
         getServer().getPluginManager().registerEvents((Listener)new Listeners(), (Plugin)this);
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
-        Bukkit.getConsoleSender().sendMessage(name + " has started!");
+        Bukkit.getConsoleSender().sendMessage(name + version + " has started!");
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
     }
 
@@ -33,7 +33,7 @@ public class Hardcore extends JavaPlugin
     {
         instance = null;
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
-        Bukkit.getConsoleSender().sendMessage(name + " has been disabled!");
+        Bukkit.getConsoleSender().sendMessage(name + version + " has been disabled!");
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
     }
 }
