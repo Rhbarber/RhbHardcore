@@ -1,5 +1,7 @@
 package com.rhbarber.hardcore;
 
+import com.rhbarber.hardcore.commands.ComandoA;
+import com.rhbarber.hardcore.commands.ComandoB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
@@ -27,6 +29,9 @@ public class Hardcore extends JavaPlugin
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
         Bukkit.getConsoleSender().sendMessage(name + version + " has started!");
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+
+        // Registrar Comandos
+        eventoComandos();
     }
 
     public void onDisable()
@@ -35,5 +40,11 @@ public class Hardcore extends JavaPlugin
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
         Bukkit.getConsoleSender().sendMessage(name + version + " has been disabled!");
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+    }
+
+    public void eventoComandos()
+    {
+        this.getCommand("rhtest").setExecutor(new ComandoA(this));
+        this.getCommand("a").setExecutor(new ComandoB(this));
     }
 }
