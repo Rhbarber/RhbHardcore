@@ -21,7 +21,7 @@ public class ComandoA implements CommandExecutor
     {
         if(!(sender instanceof Player))
         {
-            Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
+            Bukkit.getConsoleSender().sendMessage("[" + plugin.name + "]" + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
         }
         else
