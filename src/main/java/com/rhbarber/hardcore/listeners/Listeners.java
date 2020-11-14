@@ -37,9 +37,8 @@ public class Listeners implements Listener
         if(config.getString(path).equals("true"))
         {
             String text = "Config.welcome-msg-text";
-            rPlayer.sendMessage(config.getString(text));
+            rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString(text)).replaceAll("%player%", rPlayer.getName()));
         }
-        return;
     }
 
     // Spawning Creatures with Custom Stuff
