@@ -9,5 +9,5 @@ website: https://github.com/Rhbarber/
 commands:
   rhtest:
     description: Probanding
-  a:
-    description: A
+  rhb:
+    description: Main Command

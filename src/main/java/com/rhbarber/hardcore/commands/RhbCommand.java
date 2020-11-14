@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class RhbCommand implements CommandExecutor {
@@ -30,8 +31,22 @@ public class RhbCommand implements CommandExecutor {
                     rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
                     return true;
                 }
+                // Set Coords para TP
+                else if(args[0].equalsIgnoreCase("setspawn"))
+                {
+                    Location loc = rPlayer.getLocation();
+                    // Variables
+                    FileConfiguration config = plugin.getConfig();
+                    config.set("Spawn.x", loc.getX());
+                    config.set("Spawn.y", loc.getY());
+                    config.set("Spawn.z", loc.getZ());
+                    config.set("Spawn.world", loc.getWorld().getName());
+                    config.set("Spawn.yaw", loc.getYaw());
+                    config.set("Spawn.pitch", loc.getPitch();
+                    return true;
+                }
                 // Comando para TP
-                else if(args[0].equalsIgnoreCase("zero"))
+                else if(args[0].equalsIgnoreCase("spawn"))
                 {
                     Location loc = new Location(rPlayer.getWorld(),0, 90, 0, -90, 0); // World, x, y, z, yaw, pitch.
                     rPlayer.teleport(loc);
