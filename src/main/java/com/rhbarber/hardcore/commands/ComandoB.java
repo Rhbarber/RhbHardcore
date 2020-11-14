@@ -37,6 +37,13 @@ public class ComandoB implements CommandExecutor {
                     rPlayer.teleport(loc);
                     return true;
                 }
+                // Comando Reload
+                else if(args[0].equalsIgnoreCase("reload"))
+                {
+                    plugin.reloadConfig();
+                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " recargado.");
+                    return true;
+                }
                 // Comando Inexistente
                 else {
                     rPlayer.sendMessage(plugin.name + ChatColor.RED + "Ese comando no existe.");

@@ -1,0 +1,3 @@
+Config:
+    welcome-msg: true
+    welcome-msg-text: "Welcome! This is for testing purposes!"

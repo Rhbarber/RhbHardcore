@@ -1,18 +1,48 @@
 package com.rhbarber.hardcore.listeners;
 
+import com.rhbarber.hardcore.Hardcore;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class Listeners implements Listener
 {
+    private Hardcore plugin;
+
+    public Listeners(Hardcore plugin)
+    {
+        this.plugin = plugin;
+    }
+
+    @EventHandler
+    public void Login(PlayerJoinEvent event)
+    {
+        Player rPlayer = event.getPlayer();
+        rPlayer.sendMessage(ChatColor.DARK_RED + "Alo");
+
+        FileConfiguration config = plugin.getConfig();
+        String path = "Config.welcome-msg";
+
+        if(config.getString(path).equals("true"))
+        {
+            String text = "Config.welcome-msg-text";
+            rPlayer.sendMessage(config.getString(text));
+        }
+        return;
+    }
+
+    // Spawning Creatures with Custom Stuff
     @EventHandler
     public void creatureSpawn(CreatureSpawnEvent event)
     {
