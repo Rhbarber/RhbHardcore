@@ -9,10 +9,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ComandoB implements CommandExecutor {
+public class RhbCommand implements CommandExecutor {
     private Hardcore plugin;
 
-    public ComandoB(Hardcore plugin) {
+    public RhbCommand(Hardcore plugin) {
         this.plugin = plugin;
     }
 

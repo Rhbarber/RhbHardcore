@@ -1,13 +1,14 @@
 package com.rhbarber.hardcore;
 
-import com.rhbarber.hardcore.commands.ComandoA;
-import com.rhbarber.hardcore.commands.ComandoB;
+import com.rhbarber.hardcore.commands.SampleCommand;
+import com.rhbarber.hardcore.commands.RhbCommand;
+import com.rhbarber.hardcore.listeners.CreatureSpawns;
+import com.rhbarber.hardcore.listeners.Login;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import com.rhbarber.hardcore.listeners.Listeners;
 
 import java.io.File;
 
@@ -16,7 +17,7 @@ public class Hardcore extends JavaPlugin
     public String configPath;
     PluginDescriptionFile pluginFile = getDescription();
     public String version = pluginFile.getVersion();
-    public String name = ChatColor.RED + pluginFile.getName();
+    public String name = ChatColor.RED + "[" + pluginFile.getName() + "] ";
 
     public void onEnable()
     {
@@ -53,13 +54,14 @@ public class Hardcore extends JavaPlugin
 
     public void eventoComandos()
     {
-        this.getCommand("rhtest").setExecutor(new ComandoA(this));
-        this.getCommand("a").setExecutor(new ComandoB(this));
+        this.getCommand("rhtest").setExecutor(new SampleCommand(this));
+        this.getCommand("rhb").setExecutor(new RhbCommand(this));
     }
 
     public void registrarListener()
     {
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(new Listeners(this), this);
+        pm.registerEvents(new CreatureSpawns(this), this);
+        pm.registerEvents(new Login(this), this);
     }
 }

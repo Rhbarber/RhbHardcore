@@ -8,11 +8,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ComandoA implements CommandExecutor
+public class SampleCommand implements CommandExecutor
 {
     private Hardcore plugin;
 
-    public ComandoA(Hardcore plugin)
+    public SampleCommand(Hardcore plugin)
     {
         this.plugin = plugin;
     }
