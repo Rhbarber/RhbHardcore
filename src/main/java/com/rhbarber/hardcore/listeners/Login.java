@@ -2,6 +2,8 @@ package com.rhbarber.hardcore.listeners;
 
 import com.rhbarber.hardcore.Hardcore;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +25,19 @@ public class Login implements Listener {
         rPlayer.sendMessage(ChatColor.DARK_RED + "Alo");
 
         FileConfiguration config = plugin.getConfig();
+        if (config.contains("Spawn"))
+        {
+            double x = Double.valueOf(config.getString("Spawn.x"));
+            double y = Double.valueOf(config.getString("Spawn.y"));
+            double z = Double.valueOf(config.getString("Spawn.z"));
+            float yaw = Float.valueOf(config.getString("Spawn.yaw"));
+            float pitch = Float.valueOf(config.getString("Spawn.pitch"));
+            World world = plugin.getServer().getWorld(config.getString("Spawn.world"));
+
+            Location loc = new Location(world, x, y, z, yaw, pitch); // World, x, y, z, yaw, pitch.
+            rPlayer.teleport(loc);
+        }
+
         String path = "Config.welcome-msg";
 
         if(config.getString(path).equals("true"))

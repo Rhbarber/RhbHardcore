@@ -4,11 +4,14 @@ import com.rhbarber.hardcore.Hardcore;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
+import java.io.File;
 
 public class RhbCommand implements CommandExecutor {
     private Hardcore plugin;
@@ -42,14 +45,31 @@ public class RhbCommand implements CommandExecutor {
                     config.set("Spawn.z", loc.getZ());
                     config.set("Spawn.world", loc.getWorld().getName());
                     config.set("Spawn.yaw", loc.getYaw());
-                    config.set("Spawn.pitch", loc.getPitch();
+                    config.set("Spawn.pitch", loc.getPitch());
+                    plugin.saveConfig();
+                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " Spawn configurado correctamente.");
                     return true;
                 }
                 // Comando para TP
                 else if(args[0].equalsIgnoreCase("spawn"))
                 {
-                    Location loc = new Location(rPlayer.getWorld(),0, 90, 0, -90, 0); // World, x, y, z, yaw, pitch.
-                    rPlayer.teleport(loc);
+                    FileConfiguration config = plugin.getConfig();
+                    if (config.contains("Spawn"))
+                    {
+                        double x = Double.valueOf(config.getString("Spawn.x"));
+                        double y = Double.valueOf(config.getString("Spawn.y"));
+                        double z = Double.valueOf(config.getString("Spawn.z"));
+                        float yaw = Float.valueOf(config.getString("Spawn.yaw"));
+                        float pitch = Float.valueOf(config.getString("Spawn.pitch"));
+                        World world = plugin.getServer().getWorld(config.getString("Spawn.world"));
+
+                        Location loc = new Location(world, x, y, z, yaw, pitch); // World, x, y, z, yaw, pitch.
+                        rPlayer.teleport(loc);
+                        return true;
+                    }
+                    else{
+                        rPlayer.sendMessage(plugin.name + ChatColor.RED + " El Spawn no ha sido configurado.");
+                    }
                     return true;
                 }
                 // Comando Reload
