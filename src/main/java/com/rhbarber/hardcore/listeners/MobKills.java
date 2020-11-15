@@ -27,7 +27,7 @@ public class MobKills implements Listener
         if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.ZOMBIE))
         {
             FileConfiguration config = plugin.getConfig();
-            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
+            config.set("Players." + killer.getUniqueId() + ".nick", killer.getName());
 
             if(config.contains("Players." + killer.getUniqueId() + ".ZombieKills"))
             {
@@ -48,7 +48,7 @@ public class MobKills implements Listener
         if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.SKELETON))
         {
             FileConfiguration config = plugin.getConfig();
-            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
+            config.set("Players." + killer.getUniqueId() + ".nick", killer.getName());
 
             if(config.contains("Players." + killer.getUniqueId() + ".SkeletonKills"))
             {
@@ -69,7 +69,7 @@ public class MobKills implements Listener
         if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.CREEPER))
         {
             FileConfiguration config = plugin.getConfig();
-            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
+            config.set("Players." + killer.getUniqueId() + ".nick", killer.getName());
 
             if(config.contains("Players." + killer.getUniqueId() + ".CreeperKills"))
             {
