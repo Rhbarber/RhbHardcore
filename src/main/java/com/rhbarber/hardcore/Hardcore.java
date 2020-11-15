@@ -4,6 +4,7 @@ import com.rhbarber.hardcore.commands.SampleCommand;
 import com.rhbarber.hardcore.commands.RhbCommand;
 import com.rhbarber.hardcore.listeners.CreatureSpawns;
 import com.rhbarber.hardcore.listeners.Login;
+import com.rhbarber.hardcore.listeners.MobKills;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -63,5 +64,6 @@ public class Hardcore extends JavaPlugin
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new CreatureSpawns(this), this);
         pm.registerEvents(new Login(this), this);
+        pm.registerEvents(new MobKills(this), this);
     }
 }
