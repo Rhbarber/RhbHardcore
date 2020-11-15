@@ -1,3 +1,6 @@
 Config:
     welcome-msg: true
-    welcome-msg-text: "&aWelcome %player%! This is for testing purposes!"
+    welcome-msg-text:
+    - "&m                                               "
+    - "&aWelcome %player%! This is for testing purposes!"
+    - "&m                                               "

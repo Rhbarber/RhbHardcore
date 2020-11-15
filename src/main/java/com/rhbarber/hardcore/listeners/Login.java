@@ -10,6 +10,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.util.List;
+
 public class Login implements Listener {
     private Hardcore plugin;
 
@@ -42,8 +44,12 @@ public class Login implements Listener {
 
         if(config.getString(path).equals("true"))
         {
-            String text = "Config.welcome-msg-text";
-            rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString(text)).replaceAll("%player%", rPlayer.getName()));
+            List<String> msg = config.getStringList("Config.welcome-msg-text");
+            for(int i = 0; i < msg.size(); i++)
+            {
+                String text = msg.get(i);
+                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', text.replaceAll("%player%", rPlayer.getName()));
+            }
         }
     }
 }
