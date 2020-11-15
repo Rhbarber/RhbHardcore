@@ -11,7 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RhbCommand implements CommandExecutor {
     private Hardcore plugin;
@@ -101,13 +102,54 @@ public class RhbCommand implements CommandExecutor {
                     rPlayer.sendMessage(plugin.name + ChatColor.RED + " recargado.");
                     return true;
                 }
+                // Comando Report
+                else if(args[0].equalsIgnoreCase("report"))
+                {
+                    if(args.length == 1)
+                    {
+                        rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + " Para poder hacer un reporte utiliza: " + ChatColor.GRAY + "/rhb report <usuario>");
+                        return true;
+                    }else{
+                        String user = args[1];
+                        if(Bukkit.getPlayer(user) != null)
+                        {
+                            FileConfiguration config = plugin.getConfig();
+                            if(config.contains("reported-players"))
+                            {
+                                List<String> reported = config.getStringList("reported-players");
+
+                                if(reported.contains(user))
+                                {
+                                    rPlayer.sendMessage(plugin.name + ChatColor.DARK_RED + " El jugador ya esta reportado.");
+                                    return true;
+                                }else{
+                                    reported.add(user);
+                                    config.set("reported-players", reported);
+                                    plugin.saveConfig();
+                                    rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usuario reportado correctamente.");
+                                    return true;
+                                }
+                            }else{
+                                List<String> reported = new ArrayList<String>();
+                                reported.add(user);
+                                config.set("reported-players", reported);
+                                plugin.saveConfig();
+                                rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usuario reportado correctamente.");
+                                return true;
+                            }
+                        }else{
+                            rPlayer.sendMessage(plugin.name + ChatColor.YELLOW + " El jugador no esta Online");
+                            return true;
+                        }
+                    }
+                }
                 // Comando Inexistente
                 else {
-                    rPlayer.sendMessage(plugin.name + ChatColor.RED + "Ese comando no existe.");
+                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " Ese comando no existe.");
                     return true;
                 }
             } else {
-                rPlayer.sendMessage(plugin.name + ChatColor.AQUA + "Usa /a a para AAAAAAA.");
+                rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usa /a a para AAAAAAA.");
                 return true;
             }
         }

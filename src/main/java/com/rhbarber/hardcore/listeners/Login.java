@@ -48,7 +48,7 @@ public class Login implements Listener {
             for(int i = 0; i < msg.size(); i++)
             {
                 String text = msg.get(i);
-                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', text.replaceAll("%player%", rPlayer.getName()));
+                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', text.replaceAll("%player%", rPlayer.getName())));
             }
         }
     }
