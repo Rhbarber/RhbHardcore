@@ -18,7 +18,7 @@ public class MobKills implements Listener
     }
 
     @EventHandler
-    public void ZombieKills(EntityDeathEvent event)
+    public void MobKillEvent(EntityDeathEvent event)
     {
         Player killer = event.getEntity().getKiller();
         EntityType entity = event.getEntityType();
@@ -27,18 +27,18 @@ public class MobKills implements Listener
         if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.ZOMBIE))
         {
             FileConfiguration config = plugin.getConfig();
-            config.set("Players." + killer.getUniqueId() + "name", killer.getName());
+            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
 
-            if(config.contains("Players." + killer.getUniqueId() + "ZombieKills"))
+            if(config.contains("Players." + killer.getUniqueId() + ".ZombieKills"))
             {
                 int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + "ZombieKills"));
-                config.set("Players." + killer.getUniqueId() + "ZombieKills", zombieCounter + 1);
+                config.set("Players." + killer.getUniqueId() + ".ZombieKills", zombieCounter + 1);
                 plugin.saveConfig();
                 return;
             }
             else
             {
-                config.set("Players." + killer.getUniqueId() + "ZombieKills", 1);
+                config.set("Players." + killer.getUniqueId() + ".ZombieKills", 1);
                 plugin.saveConfig();
                 return;
             }
@@ -48,18 +48,39 @@ public class MobKills implements Listener
         if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.SKELETON))
         {
             FileConfiguration config = plugin.getConfig();
-            config.set("Players." + killer.getUniqueId() + "name", killer.getName());
+            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
 
-            if(config.contains("Players." + killer.getUniqueId() + "SkeletonKills"))
+            if(config.contains("Players." + killer.getUniqueId() + ".SkeletonKills"))
             {
                 int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + "SkeletonKills"));
-                config.set("Players." + killer.getUniqueId() + "SkeletonKills", zombieCounter + 1);
+                config.set("Players." + killer.getUniqueId() + ".SkeletonKills", zombieCounter + 1);
                 plugin.saveConfig();
                 return;
             }
             else
             {
-                config.set("Players." + killer.getUniqueId() + "SkeletonKills", 1);
+                config.set("Players." + killer.getUniqueId() + ".SkeletonKills", 1);
+                plugin.saveConfig();
+                return;
+            }
+        }
+
+        // Creeper Kill Counter
+        if(killer != null && killer.getType().equals(EntityType.PLAYER) && entity.equals(EntityType.CREEPER))
+        {
+            FileConfiguration config = plugin.getConfig();
+            config.set("Players." + killer.getUniqueId() + "nick", killer.getName());
+
+            if(config.contains("Players." + killer.getUniqueId() + ".CreeperKills"))
+            {
+                int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + "CreeperKills"));
+                config.set("Players." + killer.getUniqueId() + ".CreeperKills", zombieCounter + 1);
+                plugin.saveConfig();
+                return;
+            }
+            else
+            {
+                config.set("Players." + killer.getUniqueId() + ".CreeperKills", 1);
                 plugin.saveConfig();
                 return;
             }

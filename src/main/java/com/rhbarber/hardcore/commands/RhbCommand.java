@@ -34,6 +34,28 @@ public class RhbCommand implements CommandExecutor {
                     rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
                     return true;
                 }
+                // Comando "kills"
+                if (args[0].equalsIgnoreCase("kills")) {
+                    FileConfiguration config = plugin.getConfig();
+                    if(!config.contains("Players"))
+                    {
+                        rPlayer.sendMessage(ChatColor.BLUE + "--------------Kills--------------");
+                        rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        return true;
+                    }else{
+                        if(config.contains("Players." + rPlayer.getUniqueId() + ".ZombieKills"))
+                        {
+                            int counterZombies = Integer.valueOf(config.getString("Players." + rPlayer.getUniqueId() + ".ZombieKills"));
+                            rPlayer.sendMessage(ChatColor.BLUE + "--------------Kills--------------");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + counterZombies);
+                            return true;
+                        }else{
+                            rPlayer.sendMessage(ChatColor.BLUE + "--------------Kills--------------");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                            return true;
+                        }
+                    }
+                }
                 // Set Coords para TP
                 else if(args[0].equalsIgnoreCase("setspawn"))
                 {
