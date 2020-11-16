@@ -11,3 +11,5 @@ commands:
     description: Probanding
   rhb:
     description: Main Command
+  rhkills:
+    description: Kills Command made by NotEugenio_
