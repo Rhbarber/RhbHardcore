@@ -1,6 +1,5 @@
 package com.rhbarber.hardcore;
 
-import com.rhbarber.hardcore.commands.KillsCommand;
 import com.rhbarber.hardcore.commands.SampleCommand;
 import com.rhbarber.hardcore.commands.RhbCommand;
 import com.rhbarber.hardcore.listeners.CreatureSpawns;
@@ -58,7 +57,6 @@ public class Hardcore extends JavaPlugin
     {
         this.getCommand("rhtest").setExecutor(new SampleCommand(this));
         this.getCommand("rhb").setExecutor(new RhbCommand(this));
-        this.getCommand("rhkills").setExecutor(new KillsCommand(this));
     }
 
     public void registrarListener()

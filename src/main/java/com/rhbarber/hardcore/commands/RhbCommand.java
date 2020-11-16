@@ -73,6 +73,50 @@ public class RhbCommand implements CommandExecutor {
                     }
                     return true;
                 }
+                // Comando Kills by NotEugenio_
+                else if (args[0].equalsIgnoreCase("kills")) {
+                    // Ejecutamos nuestra acción. Definimos la config
+                    FileConfiguration config = plugin.getConfig();
+                    // Enviamos el mensaje siempre al principio para no hacerlo en cada condición
+                    rPlayer.sendMessage(ChatColor.BLUE + "--------------Kills--------------");
+                    // Si la config no contiene "Players"...
+                    if (!config.contains("Players." + rPlayer.getUniqueId())) {
+                        rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        return false;
+                    }
+                    // Si la config contiene el jugador con su uid y zombiekills...
+                    if (config.contains("Players." + rPlayer.getUniqueId() + ".ZombieKills")) {
+                        // Si no es nula la string se ejecutará la función.
+                        if (config.getString("Players." + rPlayer.getUniqueId() + ".ZombieKills") != null) {
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".ZombieKills"));
+                        } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        }
+                    }
+
+                    // Si la config contiene el jugador con su uid y skeletonkills...
+                    if (config.contains("Players." + rPlayer.getUniqueId() + ".SkeletonKills")) {
+                        // Si no es nula la string se ejecutará la función.
+                        if (config.getString("Players." + rPlayer.getUniqueId() + ".SkeletonKills") != null) {
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".SkeletonKills"));
+                        } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        }
+                    }
+
+
+                    // Si la config contiene el jugador con su uid y creeperkills...
+                    if (config.contains("Players." + rPlayer.getUniqueId() + ".CreeperKills")) {
+                        // Si no es nula la string se ejecutará la función.
+                        if (config.getString("Players." + rPlayer.getUniqueId() + ".CreeperKills") != null) {
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".CreeperKills"));
+                        } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + ChatColor.GRAY + "Ninguno");
+                        }
+                    }
+                }
                 // Comando Reload
                 else if(args[0].equalsIgnoreCase("reload"))
                 {
@@ -131,6 +175,7 @@ public class RhbCommand implements CommandExecutor {
                 return true;
             }
         }
+        return true;
     }
 }
 

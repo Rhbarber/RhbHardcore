@@ -10,6 +10,4 @@ commands:
   rhtest:
     description: Probanding
   rhb:
-    description: Main Command
-  rhkills:
-    description: Kills Command made by NotEugenio_
+    description: Main Command, "kills" argument made by NotEugenio_
