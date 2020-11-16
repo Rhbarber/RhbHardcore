@@ -18,7 +18,7 @@ public class Hardcore extends JavaPlugin
     public String configPath;
     PluginDescriptionFile pluginFile = getDescription();
     public String version = pluginFile.getVersion();
-    public String name = ChatColor.RED + "[" + pluginFile.getName() + "] ";
+    public String name = ChatColor.GRAY + "[" + ChatColor.RED + pluginFile.getName() + ChatColor.GRAY + "] ";
 
     public void onEnable()
     {

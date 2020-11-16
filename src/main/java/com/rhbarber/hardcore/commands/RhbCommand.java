@@ -24,7 +24,7 @@ public class RhbCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player))
         {
-            Bukkit.getConsoleSender().sendMessage("[" + plugin.name + "]" + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
+            Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
         }
         else {
@@ -121,7 +121,7 @@ public class RhbCommand implements CommandExecutor {
                 else if(args[0].equalsIgnoreCase("reload"))
                 {
                     plugin.reloadConfig();
-                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " recargado.");
+                    rPlayer.sendMessage(plugin.name + ChatColor.DARK_RED + " El plugin ha sido recargado.");
                     return true;
                 }
                 // Comando Report
@@ -171,7 +171,8 @@ public class RhbCommand implements CommandExecutor {
                     return true;
                 }
             } else {
-                rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usa /a a para AAAAAAA.");
+                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bRhbHardcore plugin made by Rhbarber"));
+                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cContributors: NotEugenio_"));
                 return true;
             }
         }
