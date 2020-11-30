@@ -93,6 +93,8 @@ public class RhbCommand implements CommandExecutor {
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".ZombieKills"));
                         } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + ChatColor.GRAY + "Ninguno");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + ChatColor.GRAY + "Ninguno");
                         }
                     }
 
@@ -102,7 +104,9 @@ public class RhbCommand implements CommandExecutor {
                         if (config.getString("Players." + rPlayer.getUniqueId() + ".SkeletonKills") != null) {
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".SkeletonKills"));
                         } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + ChatColor.GRAY + "Ninguno");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + ChatColor.GRAY + "Ninguno");
                         }
                     }
 
@@ -113,6 +117,8 @@ public class RhbCommand implements CommandExecutor {
                         if (config.getString("Players." + rPlayer.getUniqueId() + ".CreeperKills") != null) {
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + config.getInt("Players." + rPlayer.getUniqueId() + ".CreeperKills"));
                         } else { // Si no, si la string es nula, es decir, no tiene número o no existe se hará lo siguiente.
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Zombies Asesinados: " + ChatColor.GRAY + "Ninguno");
+                            rPlayer.sendMessage(ChatColor.DARK_AQUA + "Esqueletos Asesinados: " + ChatColor.GRAY + "Ninguno");
                             rPlayer.sendMessage(ChatColor.DARK_AQUA + "Creepers Asesinados: " + ChatColor.GRAY + "Ninguno");
                         }
                     }
