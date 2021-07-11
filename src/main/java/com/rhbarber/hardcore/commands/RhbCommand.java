@@ -35,7 +35,7 @@ public class RhbCommand implements CommandExecutor {
                     rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
                     return true;
                 }
-                // Set Coords para TP
+                // Ser Coords TP
                 else if(args[0].equalsIgnoreCase("setspawn"))
                 {
                     Location loc = rPlayer.getLocation();
