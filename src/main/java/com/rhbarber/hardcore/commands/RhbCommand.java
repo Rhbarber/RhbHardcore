@@ -98,7 +98,7 @@ public class RhbCommand implements CommandExecutor {
                         }
                     }
 
-                    // Si la config contiene el jugador con su uid y skeletonkills...
+                    // Si la config contiene el jugador con su uid y skeletonkills.
                     if (config.contains("Players." + rPlayer.getUniqueId() + ".SkeletonKills")) {
                         // Si no es nula la string se ejecutará la función.
                         if (config.getString("Players." + rPlayer.getUniqueId() + ".SkeletonKills") != null) {
