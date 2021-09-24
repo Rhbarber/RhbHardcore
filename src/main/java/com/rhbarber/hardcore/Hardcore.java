@@ -12,19 +12,22 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.Objects;
 
 public class Hardcore extends JavaPlugin
 {
+    public String header = ChatColor.YELLOW + "--------------------------------------------";
     public String configPath;
     PluginDescriptionFile pluginFile = getDescription();
     public String version = pluginFile.getVersion();
     public String name = ChatColor.GRAY + "[" + ChatColor.RED + pluginFile.getName() + ChatColor.GRAY + "] ";
 
+    @Override
     public void onEnable()
     {
-        Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+        Bukkit.getConsoleSender().sendMessage(header);
         Bukkit.getConsoleSender().sendMessage(name + version + " has started!");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+        Bukkit.getConsoleSender().sendMessage(header);
 
         // Registrar Archivo Configuracion
         configFile();
@@ -34,11 +37,12 @@ public class Hardcore extends JavaPlugin
         registrarListener();
     }
 
+    @Override
     public void onDisable()
     {
-        Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+        Bukkit.getConsoleSender().sendMessage(header);
         Bukkit.getConsoleSender().sendMessage(name + version + " has been disabled!");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "--------------------------------------------");
+        Bukkit.getConsoleSender().sendMessage(header);
     }
 
     public void configFile()
@@ -55,8 +59,8 @@ public class Hardcore extends JavaPlugin
 
     public void eventoComandos()
     {
-        this.getCommand("rhtest").setExecutor(new SampleCommand(this));
-        this.getCommand("rhb").setExecutor(new RhbCommand(this));
+        Objects.requireNonNull(this.getCommand("rhtest")).setExecutor(new SampleCommand(this));
+        Objects.requireNonNull(this.getCommand("rhb")).setExecutor(new RhbCommand(this));
     }
 
     public void registrarListener()

@@ -13,22 +13,22 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RhbCommand implements CommandExecutor {
-    private Hardcore plugin;
+    private final Hardcore plugin;
 
     public RhbCommand(Hardcore plugin) {
         this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player))
+        if (!(sender instanceof Player rPlayer))
         {
             Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
         }
         else {
-            Player rPlayer = (Player) sender;
             if (args.length > 0) {
                 // Comando "a"
                 if (args[0].equalsIgnoreCase("a")) {
@@ -44,7 +44,7 @@ public class RhbCommand implements CommandExecutor {
                     config.set("Spawn.x", loc.getX());
                     config.set("Spawn.y", loc.getY());
                     config.set("Spawn.z", loc.getZ());
-                    config.set("Spawn.world", loc.getWorld().getName());
+                    config.set("Spawn.world", Objects.requireNonNull(loc.getWorld()).getName());
                     config.set("Spawn.yaw", loc.getYaw());
                     config.set("Spawn.pitch", loc.getPitch());
                     plugin.saveConfig();
@@ -57,12 +57,12 @@ public class RhbCommand implements CommandExecutor {
                     FileConfiguration config = plugin.getConfig();
                     if (config.contains("Spawn"))
                     {
-                        double x = Double.valueOf(config.getString("Spawn.x"));
-                        double y = Double.valueOf(config.getString("Spawn.y"));
-                        double z = Double.valueOf(config.getString("Spawn.z"));
-                        float yaw = Float.valueOf(config.getString("Spawn.yaw"));
-                        float pitch = Float.valueOf(config.getString("Spawn.pitch"));
-                        World world = plugin.getServer().getWorld(config.getString("Spawn.world"));
+                        double x = Double.parseDouble(config.getString("Spawn.x"));
+                        double y = Double.parseDouble(config.getString("Spawn.y"));
+                        double z = Double.parseDouble(config.getString("Spawn.z"));
+                        float yaw = Float.parseFloat(config.getString("Spawn.yaw"));
+                        float pitch = Float.parseFloat(config.getString("Spawn.pitch"));
+                        World world = plugin.getServer().getWorld(Objects.requireNonNull(config.getString("Spawn.world")));
 
                         Location loc = new Location(world, x, y, z, yaw, pitch); // World, x, y, z, yaw, pitch.
                         rPlayer.teleport(loc);
@@ -158,7 +158,7 @@ public class RhbCommand implements CommandExecutor {
                                     return true;
                                 }
                             }else{
-                                List<String> reported = new ArrayList<String>();
+                                List<String> reported = new ArrayList<>();
                                 reported.add(user);
                                 config.set("reported-players", reported);
                                 plugin.saveConfig();

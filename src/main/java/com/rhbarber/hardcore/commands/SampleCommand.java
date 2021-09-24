@@ -19,14 +19,13 @@ public class SampleCommand implements CommandExecutor
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
-        if(!(sender instanceof Player))
+        if(!(sender instanceof Player rPlayer))
         {
             Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
         }
         else
         {
-            Player rPlayer = (Player) sender;
             rPlayer.sendMessage(ChatColor.DARK_RED + "Sample Text XD");
             rPlayer.sendMessage(ChatColor.YELLOW + "a");
             return true;

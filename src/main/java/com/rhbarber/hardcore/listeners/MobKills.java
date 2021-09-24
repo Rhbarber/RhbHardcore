@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.Objects;
+
 public class MobKills implements Listener
 {
     private Hardcore plugin;
@@ -31,7 +33,7 @@ public class MobKills implements Listener
 
             if(config.contains("Players." + killer.getUniqueId() + ".ZombieKills"))
             {
-                int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + ".ZombieKills"));
+                int zombieCounter = Integer.parseInt(Objects.requireNonNull(config.getString("Players." + killer.getUniqueId() + ".ZombieKills")));
                 config.set("Players." + killer.getUniqueId() + ".ZombieKills", zombieCounter + 1);
                 plugin.saveConfig();
                 return;
@@ -52,7 +54,7 @@ public class MobKills implements Listener
 
             if(config.contains("Players." + killer.getUniqueId() + ".SkeletonKills"))
             {
-                int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + ".SkeletonKills"));
+                int zombieCounter = Integer.parseInt(Objects.requireNonNull(config.getString("Players." + killer.getUniqueId() + ".SkeletonKills")));
                 config.set("Players." + killer.getUniqueId() + ".SkeletonKills", zombieCounter + 1);
                 plugin.saveConfig();
                 return;
@@ -73,16 +75,14 @@ public class MobKills implements Listener
 
             if(config.contains("Players." + killer.getUniqueId() + ".CreeperKills"))
             {
-                int zombieCounter = Integer.valueOf(config.getString("Players." + killer.getUniqueId() + ".CreeperKills"));
+                int zombieCounter = Integer.parseInt(Objects.requireNonNull(config.getString("Players." + killer.getUniqueId() + ".CreeperKills")));
                 config.set("Players." + killer.getUniqueId() + ".CreeperKills", zombieCounter + 1);
                 plugin.saveConfig();
-                return;
             }
             else
             {
                 config.set("Players." + killer.getUniqueId() + ".CreeperKills", 1);
                 plugin.saveConfig();
-                return;
             }
         }
     }

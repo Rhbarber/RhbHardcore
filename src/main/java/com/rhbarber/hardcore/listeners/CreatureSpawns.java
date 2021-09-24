@@ -12,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class CreatureSpawns implements Listener
 {
     private Hardcore plugin;
@@ -34,7 +36,7 @@ public class CreatureSpawns implements Listener
         if(event.getEntityType() == EntityType.ZOMBIE)
         {
             Zombie zombie = (Zombie) event.getEntity();
-            zombie.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
+            Objects.requireNonNull(zombie.getEquipment()).setHelmet(new ItemStack(Material.NETHERITE_HELMET));
             zombie.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
             zombie.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
             zombie.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
@@ -44,7 +46,7 @@ public class CreatureSpawns implements Listener
         if(event.getEntityType() == EntityType.SKELETON)
         {
             Skeleton skeleton = (Skeleton) event.getEntity();
-            skeleton.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
+            Objects.requireNonNull(skeleton.getEquipment()).setHelmet(new ItemStack(Material.NETHERITE_HELMET));
             skeleton.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
             skeleton.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
             skeleton.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
