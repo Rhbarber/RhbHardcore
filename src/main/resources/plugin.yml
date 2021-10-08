@@ -8,6 +8,6 @@ website: https://github.com/Rhbarber/
 
 commands:
   rhtest:
-    description: Probanding
+    description: Testing
   rhb:
     description: Main Command, "kills" argument made by NotEugenio_
