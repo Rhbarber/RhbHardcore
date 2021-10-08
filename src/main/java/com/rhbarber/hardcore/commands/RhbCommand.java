@@ -57,11 +57,11 @@ public class RhbCommand implements CommandExecutor {
                     FileConfiguration config = plugin.getConfig();
                     if (config.contains("Spawn"))
                     {
-                        double x = Double.parseDouble(config.getString("Spawn.x"));
-                        double y = Double.parseDouble(config.getString("Spawn.y"));
-                        double z = Double.parseDouble(config.getString("Spawn.z"));
-                        float yaw = Float.parseFloat(config.getString("Spawn.yaw"));
-                        float pitch = Float.parseFloat(config.getString("Spawn.pitch"));
+                        double x = Double.parseDouble(Objects.requireNonNull(config.getString("Spawn.x")));
+                        double y = Double.parseDouble(Objects.requireNonNull(config.getString("Spawn.y")));
+                        double z = Double.parseDouble(Objects.requireNonNull(config.getString("Spawn.z")));
+                        float yaw = Float.parseFloat(Objects.requireNonNull(config.getString("Spawn.yaw")));
+                        float pitch = Float.parseFloat(Objects.requireNonNull(config.getString("Spawn.pitch")));
                         World world = plugin.getServer().getWorld(Objects.requireNonNull(config.getString("Spawn.world")));
 
                         Location loc = new Location(world, x, y, z, yaw, pitch); // World, x, y, z, yaw, pitch.
