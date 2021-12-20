@@ -1,7 +1,7 @@
 name: RhbHardcore
 version: ${project.version}
 main: com.rhbarber.hardcore.Hardcore
-api-version: 1.17
+api-version: 1.18
 authors: [ Rhbarber, NotEugenio_ ]
 description: SUFFERING!
 website: https://github.com/Rhbarber/
