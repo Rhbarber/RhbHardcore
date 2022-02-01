@@ -2,9 +2,11 @@ package com.rhbarber.hardcore;
 
 import com.rhbarber.hardcore.commands.SampleCommand;
 import com.rhbarber.hardcore.commands.RhbCommand;
+import com.rhbarber.hardcore.commands.Test;
 import com.rhbarber.hardcore.listeners.CreatureSpawns;
 import com.rhbarber.hardcore.listeners.Login;
 import com.rhbarber.hardcore.listeners.MobKills;
+import com.rhbarber.hardcore.placeholders.RhbExpansion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -28,6 +30,12 @@ public class Hardcore extends JavaPlugin
         Bukkit.getConsoleSender().sendMessage(header);
         Bukkit.getConsoleSender().sendMessage(name + version + " has started!");
         Bukkit.getConsoleSender().sendMessage(header);
+
+        new RhbExpansion().register();
+
+        // if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            //new RhbExpansion().register();
+        //}
 
         // Registrar Archivo Configuracion
         configFile();
@@ -61,6 +69,7 @@ public class Hardcore extends JavaPlugin
     {
         Objects.requireNonNull(this.getCommand("rhtest")).setExecutor(new SampleCommand(this));
         Objects.requireNonNull(this.getCommand("rhb")).setExecutor(new RhbCommand(this));
+        Objects.requireNonNull(this.getCommand("test")).setExecutor(new Test(this));
     }
 
     public void registrarListener()

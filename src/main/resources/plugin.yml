@@ -4,10 +4,14 @@ main: com.rhbarber.hardcore.Hardcore
 api-version: 1.18
 authors: [ Rhbarber, NotEugenio_ ]
 description: SUFFERING!
-website: https://github.com/Rhbarber/
+website: https://rhbarber.com/
+
+softdepend: [PlaceholderAPI] # This is used, if your plugin works without PlaceholderAPI.
 
 commands:
   rhtest:
     description: Testing
   rhb:
     description: Main Command, "kills" argument made by NotEugenio_
+  test:
+    description: Me messing up with PlaceholderAPI just because
