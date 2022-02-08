@@ -26,6 +26,7 @@ public class Login implements Listener {
     {
         Player rPlayer = event.getPlayer();
         rPlayer.sendMessage(ChatColor.DARK_RED + "Alo");
+        event.setJoinMessage("Welcome to hell!!");
 
         FileConfiguration config = plugin.getConfig();
         if (config.contains("Spawn"))

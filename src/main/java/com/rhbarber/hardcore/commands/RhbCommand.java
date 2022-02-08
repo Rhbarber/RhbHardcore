@@ -10,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +23,15 @@ public class RhbCommand implements CommandExecutor {
         this.plugin = plugin;
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player rPlayer))
-        {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (!(sender instanceof Player rPlayer)) {
             Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
-        }
-        else {
+        } else {
             if (args.length > 0) {
                 // Comando "a"
                 if (args[0].equalsIgnoreCase("a")) {
-                    rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
+                    rPlayer.sendMessage(plugin.getName() + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
                     return true;
                 }
                 // Set Coords TP
@@ -48,7 +47,7 @@ public class RhbCommand implements CommandExecutor {
                     config.set("Spawn.yaw", loc.getYaw());
                     config.set("Spawn.pitch", loc.getPitch());
                     plugin.saveConfig();
-                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " Spawn configurado correctamente.");
+                    rPlayer.sendMessage(plugin.getName() + ChatColor.RED + " Spawn configurado correctamente.");
                     return true;
                 }
                 // Comando para TP
@@ -69,7 +68,7 @@ public class RhbCommand implements CommandExecutor {
                         return true;
                     }
                     else{
-                        rPlayer.sendMessage(plugin.name + ChatColor.RED + " El Spawn no ha sido configurado.");
+                        rPlayer.sendMessage(plugin.getName() + ChatColor.RED + " El Spawn no ha sido configurado.");
                     }
                     return true;
                 }
@@ -127,7 +126,7 @@ public class RhbCommand implements CommandExecutor {
                 else if(args[0].equalsIgnoreCase("reload"))
                 {
                     plugin.reloadConfig();
-                    rPlayer.sendMessage(plugin.name + ChatColor.DARK_RED + " El plugin ha sido recargado.");
+                    rPlayer.sendMessage(plugin.getName() + ChatColor.DARK_RED + " El plugin ha sido recargado.");
                     return true;
                 }
                 // Comando Report
@@ -135,45 +134,42 @@ public class RhbCommand implements CommandExecutor {
                 {
                     if(args.length == 1)
                     {
-                        rPlayer.sendMessage(plugin.name + ChatColor.LIGHT_PURPLE + " Para poder hacer un reporte utiliza: " + ChatColor.GRAY + "/rhb report <usuario>");
+                        rPlayer.sendMessage(plugin.getName() + ChatColor.LIGHT_PURPLE + " Para poder hacer un reporte utiliza: " + ChatColor.GRAY + "/rhb report <usuario>");
                         return true;
                     }else{
                         String user = args[1];
                         if(Bukkit.getPlayer(user) != null)
                         {
                             FileConfiguration config = plugin.getConfig();
-                            if(config.contains("reported-players"))
-                            {
+                            if(config.contains("reported-players")) {
                                 List<String> reported = config.getStringList("reported-players");
 
-                                if(reported.contains(user))
-                                {
-                                    rPlayer.sendMessage(plugin.name + ChatColor.DARK_RED + " El jugador ya esta reportado.");
-                                    return true;
-                                }else{
+                                if (reported.contains(user)) {
+                                    rPlayer.sendMessage(plugin.getName() + ChatColor.DARK_RED + " El jugador ya esta reportado.");
+                                } else {
                                     reported.add(user);
                                     config.set("reported-players", reported);
                                     plugin.saveConfig();
-                                    rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usuario reportado correctamente.");
-                                    return true;
+                                    rPlayer.sendMessage(plugin.getName() + ChatColor.AQUA + " Usuario reportado correctamente.");
                                 }
+                                return true;
                             }else{
                                 List<String> reported = new ArrayList<>();
                                 reported.add(user);
                                 config.set("reported-players", reported);
                                 plugin.saveConfig();
-                                rPlayer.sendMessage(plugin.name + ChatColor.AQUA + " Usuario reportado correctamente.");
+                                rPlayer.sendMessage(plugin.getName() + ChatColor.AQUA + " Usuario reportado correctamente.");
                                 return true;
                             }
                         }else{
-                            rPlayer.sendMessage(plugin.name + ChatColor.YELLOW + " El jugador no esta Online");
+                            rPlayer.sendMessage(plugin.getName() + ChatColor.YELLOW + " El jugador no esta Online");
                             return true;
                         }
                     }
                 }
                 // Comando Inexistente
                 else {
-                    rPlayer.sendMessage(plugin.name + ChatColor.RED + " Ese comando no existe.");
+                    rPlayer.sendMessage(plugin.getName() + ChatColor.RED + " Ese comando no existe.");
                     return true;
                 }
             } else {
