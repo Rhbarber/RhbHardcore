@@ -48,7 +48,7 @@ public class Login implements Listener {
         {
             List<String> msg = config.getStringList("Config.welcome-msg-text");
             for (String text : msg) {
-                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', text.replaceAll("%player%", rPlayer.getName())));
+                rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', text.replace("%player%", rPlayer.getName())));
             }
         }
     }

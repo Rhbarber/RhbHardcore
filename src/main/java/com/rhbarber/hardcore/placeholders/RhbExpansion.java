@@ -2,21 +2,22 @@ package com.rhbarber.hardcore.placeholders;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class RhbExpansion extends PlaceholderExpansion {
 
     @Override
-    public String getIdentifier() {
+    public @NotNull String getIdentifier() {
         return "RhbHardcore";
     }
 
     @Override
-    public String getAuthor() {
+    public @NotNull String getAuthor() {
         return "Rhbarber";
     }
 
     @Override
-    public String getVersion() {
+    public @NotNull String getVersion() {
         return "${project.version}";
     }
 

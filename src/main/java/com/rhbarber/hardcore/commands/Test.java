@@ -1,13 +1,14 @@
 package com.rhbarber.hardcore.commands;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import com.rhbarber.hardcore.Hardcore;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class Test implements CommandExecutor
 {
@@ -19,15 +20,12 @@ public class Test implements CommandExecutor
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
-    {
-        if (sender instanceof Player player)
-        {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (sender instanceof Player player) {
             String replaced = PlaceholderAPI.setPlaceholders(player, "%player_name%");
             Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + replaced + " has ran this command!");
 
-            if(args[0].equalsIgnoreCase("test"))
-            {
+            if (args[0].equalsIgnoreCase("test")) {
                 player.sendMessage(PlaceholderAPI.setPlaceholders(player, "%rhbexpansion_test1%"));
             }
 

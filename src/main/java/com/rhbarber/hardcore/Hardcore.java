@@ -30,7 +30,7 @@ public class Hardcore extends JavaPlugin {
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new RhbExpansion().register();
-            Bukkit.getConsoleSender().sendMessage("PlaceholderAPI support loaded!");
+            Bukkit.getConsoleSender().sendMessage(name + ": PlaceholderAPI support loaded!");
         }
 
         // Registrar Archivo Configuracion
