@@ -6,7 +6,7 @@ authors: [ Rhbarber, NotEugenio_ ]
 description: SUFFERING!
 website: https://rhbarber.com/
 
-softdepend: [PlaceholderAPI] # This is used, if your plugin works without PlaceholderAPI.
+softdepend: [ PlaceholderAPI ]
 
 commands:
   rhtest:

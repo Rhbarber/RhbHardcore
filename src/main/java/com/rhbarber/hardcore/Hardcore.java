@@ -30,20 +30,19 @@ public class Hardcore extends JavaPlugin {
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new RhbExpansion().register();
-            Bukkit.getConsoleSender().sendMessage(name + ": PlaceholderAPI support loaded!");
+            Bukkit.getConsoleSender().sendMessage(name + "PlaceholderAPI support loaded!");
         }
 
-        // Registrar Archivo Configuracion
+        // Config File Register
         configFile();
-        // Registrar Comandos
-        eventoComandos();
-        // Registrar Eventos/Listeners
-        registrarListener();
+        // Command Register
+        cmdEvent();
+        // Events and Listener Register
+        listenerReg();
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
         Bukkit.getConsoleSender().sendMessage(HEADER);
         Bukkit.getConsoleSender().sendMessage(name + version + " has been disabled!");
         Bukkit.getConsoleSender().sendMessage(HEADER);
@@ -60,15 +59,14 @@ public class Hardcore extends JavaPlugin {
         }
     }
 
-    public void eventoComandos()
-    {
+    public void cmdEvent() {
         Objects.requireNonNull(this.getCommand("rhtest")).setExecutor(new SampleCommand(this));
         Objects.requireNonNull(this.getCommand("rhb")).setExecutor(new RhbCommand(this));
         Objects.requireNonNull(this.getCommand("test")).setExecutor(new Test(this));
+        Objects.requireNonNull(this.getCommand("test")).setTabCompleter(new Test(this));
     }
 
-    public void registrarListener()
-    {
+    public void listenerReg() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new CreatureSpawns(this), this);
         pm.registerEvents(new Login(this), this);
