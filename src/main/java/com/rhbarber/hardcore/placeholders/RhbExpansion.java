@@ -4,6 +4,8 @@ import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public class RhbExpansion extends PlaceholderExpansion {
 
     @Override
@@ -34,7 +36,7 @@ public class RhbExpansion extends PlaceholderExpansion {
     @Override
     public String onPlaceholderRequest(Player player, String params) {
         if(params.equalsIgnoreCase("name")) {
-            return player == null ? null : player.getName(); // "name" requires the player to be valid
+            return Optional.ofNullable(player).map(Player::getName).orElse(null); // "name" requires the player to be valid
         }
 
         if(params.equalsIgnoreCase("test1")) {
