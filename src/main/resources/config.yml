@@ -1,6 +1,6 @@
-Config:
-    welcome-msg: true
-    welcome-msg-text:
+welcome-msg:
+  enabled: true
+  text:
     - "&m                                                               "
     - "&aWelcome %player%! This is for testing purposes, do not mind me!"
     - "&m                                                               "
