@@ -1,4 +1,4 @@
-package com.rhbarber.hardcore.commands;
+package com.rhbarber.hardcore.commands.impl;
 
 import com.rhbarber.hardcore.Hardcore;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -16,26 +16,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Test implements CommandExecutor, TabCompleter {
-    private Hardcore plugin;
+public class TestCommand implements CommandExecutor, TabCompleter {
+    private final Hardcore plugin;
 
-    public Test(Hardcore plugin) {
+    public TestCommand(Hardcore plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (sender instanceof Player player) {
-            String replaced = PlaceholderAPI.setPlaceholders(player, "%player_name%");
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + replaced + " has ran this command!");
+        if (!(sender instanceof Player player)) {
+            return false;
+        }
+        String replaced = PlaceholderAPI.setPlaceholders(player, "%player_name%");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + replaced + " has ran this command!");
 
-            if (args[0].equalsIgnoreCase("test")) {
-                player.sendMessage(PlaceholderAPI.setPlaceholders(player, "%rhbexpansion_test1%"));
-            }
+        if (args[0].equalsIgnoreCase("test")) {
+            player.sendMessage(PlaceholderAPI.setPlaceholders(player, "%rhbexpansion_test1%"));
+        }
 
-            if (args[0].equalsIgnoreCase("test2")) {
-                player.sendMessage(PlaceholderAPI.setPlaceholders(player, "%rhbexpansion_test2%"));
-            }
+        if (args[0].equalsIgnoreCase("test2")) {
+            player.sendMessage(PlaceholderAPI.setPlaceholders(player, "%rhbexpansion_test2%"));
         }
         return false;
     }
@@ -43,17 +44,22 @@ public class Test implements CommandExecutor, TabCompleter {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-
-        if (command.getName().equalsIgnoreCase("test")) {
-            if (args.length == 1) {
+        if (!command.getName().equalsIgnoreCase("test")) {
+            return null;
+        }
+        switch (args.length) {
+            case 1 -> {
                 return Bukkit.getServer().getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
-            } else if (args.length == 2) {
+            }
+            case 2 -> {
                 List<String> arguments = new ArrayList<>();
                 arguments.add("A1");
                 arguments.add("B2");
                 return arguments;
             }
+            default -> {
+                return null;
+            }
         }
-        return null;
     }
 }

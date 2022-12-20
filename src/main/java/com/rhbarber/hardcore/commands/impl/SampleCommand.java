@@ -1,4 +1,4 @@
-package com.rhbarber.hardcore.commands;
+package com.rhbarber.hardcore.commands.impl;
 
 import com.rhbarber.hardcore.Hardcore;
 import org.bukkit.Bukkit;
@@ -20,10 +20,9 @@ public class SampleCommand implements CommandExecutor {
         if (!(sender instanceof Player rPlayer)) {
             Bukkit.getConsoleSender().sendMessage(plugin.getName() + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
-        } else {
-            rPlayer.sendMessage(ChatColor.DARK_RED + "Sample Text XD");
-            rPlayer.sendMessage(ChatColor.YELLOW + "a");
-            return true;
         }
+        rPlayer.sendMessage(ChatColor.DARK_RED + "Sample Text XD");
+        rPlayer.sendMessage(ChatColor.YELLOW + "a");
+        return true;
     }
 }
