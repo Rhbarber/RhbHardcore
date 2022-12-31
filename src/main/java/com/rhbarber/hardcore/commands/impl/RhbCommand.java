@@ -25,7 +25,7 @@ public class RhbCommand implements CommandExecutor {
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (!(sender instanceof Player rPlayer)) {
-            Bukkit.getConsoleSender().sendMessage(plugin.name + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
+            Bukkit.getConsoleSender().sendMessage(plugin.getName() + ChatColor.RED + " Este comando no se puede ejecutar desde la consola.");
             return false;
         }
         if (args.length == 0) {
@@ -35,7 +35,7 @@ public class RhbCommand implements CommandExecutor {
         }
         // Comando "a"
         if (args[0].equalsIgnoreCase("a")) {
-            rPlayer.sendMessage(plugin.getName() + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.version);
+            rPlayer.sendMessage(plugin.getName() + ChatColor.LIGHT_PURPLE + "AAAAAAAAAAAAA" + plugin.getDescription().getVersion());
             return true;
         }
         // Set Coords TP
