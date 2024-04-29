@@ -2,7 +2,7 @@ name: RhbHardcore
 version: ${project.version}
 main: com.rhbarber.hardcore.Hardcore
 api-version: 1.20
-authors: [Rhbarber, NotEugenio_, GatitoUwU]
+authors: [Rhbarber]
 description: SUFFERING!
 website: https://rhbarber.com/
 

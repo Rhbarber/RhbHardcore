@@ -30,7 +30,6 @@ public class RhbCommand implements CommandExecutor {
         }
         if (args.length == 0) {
             rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', "&bRhbHardcore plugin made by Rhbarber"));
-            rPlayer.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cContributors: NotEugenio_"));
             return true;
         }
         // Comando "a"
