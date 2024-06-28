@@ -44,7 +44,7 @@ public class CreatureListener implements Listener {
             skeleton.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
 
             ItemStack punchBow = new ItemStack(Material.BOW);
-            punchBow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+            punchBow.addEnchantment(Enchantment.PUNCH, 2);
 
             skeleton.getEquipment().setItemInMainHand(punchBow);
         }
